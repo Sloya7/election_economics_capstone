@@ -1,0 +1,16 @@
+This is a document to track progress and error adjustments
+
+inital data review details
+
+ETF processing development files details
+
+ETF loop development
+When given a few hardcoded file paths to loop through, the loops formatted the data as expected. However, once looping through the 1000+ files,
+some file specific error began appears. These errors are mainly file formatting issues such as unreadable characters,
+incorrect columns, and incorrect dates. To start, all files that had formatting issues were not included in the data provided to the 
+machine learning models. 
+to make the loop work, a block of code to loop through a directory was added. 
+once the files were placed in the dir for processing, some specific errors occured with files. 
+a try, exception block was added to help troubleshooting and to try and incorportate as many files as possible.
+
+

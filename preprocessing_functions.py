@@ -13,24 +13,44 @@ def create_etf_name(file_path):
 
 
 ### Creates inital DF and removes columns, adds new ones
-
-def format_columns(file_path, etf_name):
+def format_checking(file_path):
     #read file
-    etf_df = pd.read_csv(file_path)
+    try:
+        etf_df = pd.read_csv(file_path, encoding='utf-8')
+        drop_columns =  ["OpenInt", "Volume", "Low", "High"]
+        for c in drop_columns:
+            if c in etf_df.columns:
+                return etf_df
+        else:
+            return 1
+        
+    except pd.errors.ParserError as e:
+        print(f"Parsing error: {e}")
+        return 1
+    except Exception as e: 
+        print(file_path, "Formmating error!", )
+        return 1
+
+def format_columns(checked_path, etf_name):
     #drop columns
     drop_columns =  ["OpenInt", "Volume", "Low", "High"]
-    etf_df.drop(drop_columns, axis = 1, inplace = True)
-    #add value changed column
-    etf_df['change']= etf_df['Close'] - etf_df['Open']
-    #add the etf's name
-    etf_df['ETF_name'] = etf_name
     
-    return etf_df
+    
+    checked_path.drop(drop_columns, axis = 1, inplace = True)
+    
+    #add value changed column
+    checked_path['change']= checked_path['Close'] - checked_path['Open']
+    #add the etf's name
+    checked_path['ETF_name'] = etf_name
+    
+    return checked_path
  
 ### Coverts date from string to datetime format 
 # and creates new column with year only 
 
 def format_dates(formatted_df):
+    if type(formatted_df) == int: 
+        return 1
     formatted_date = pd.DataFrame(formatted_df)
     formatted_date['Date'] = pd.to_datetime(formatted_date['Date']) 
     formatted_date['Year'] = formatted_date.Date.dt.year
@@ -64,15 +84,19 @@ def find_yearly_limits(df):
         year_df = start_end_dates[start_end_dates.Year == i]
 
         #uses objects to reference needed values
-        open = year_df.iloc[0].Open
-        close = year_df.iloc[1].Close
-        change = close - open
-        
-        # creates mapping array 
-        new_row = {'Year':i, 'ETF_name':year_df.iloc[0].ETF_name, 'Year_Open':open, 'Year_Close':close, 'Year_Change':change}
-        
-        # inserts data into new row of the output dataframe
-        output_df.loc[len(output_df)] = new_row
+        try: 
+            open = year_df.iloc[0].Open
+            close = year_df.iloc[1].Close
+            change = close - open
+            
+            # creates mapping array 
+            new_row = {'Year':i, 'ETF_name':year_df.iloc[0].ETF_name, 'Year_Open':open, 'Year_Close':close, 'Year_Change':change}
+            
+            # inserts data into new row of the output dataframe
+            output_df.loc[len(output_df)] = new_row
+        except Exception as e:
+            print("date error!")
+            return 1
 
     #fill NaNs with a default string value
     output_df['Loss'] = 'no'
