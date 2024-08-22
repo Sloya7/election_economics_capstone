@@ -1,4 +1,5 @@
-# preprocessing function definitions
+
+""" This applies the work found in the ETF_preprocessing_development.ipynb into usable functions as a py file """
 
 import pandas as pd 
 import numpy as np 

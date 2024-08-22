@@ -1,4 +1,11 @@
-from preprocessing_functions import (create_etf_name, format_checking, format_columns, 
+
+"""
+This file takes in a directory path with multiple Market data files. It checks to make sure the file is reasonable formatted,
+then processes the data by using the functions defined in preprocessing_functions.py to prepare the data 
+for machine learning. The output dataframe is named 'market_df'.
+"""
+
+from ETF_preprocessing_functions import (create_etf_name, format_checking, format_columns, 
     format_dates, find_yearly_limits, find_outliars)
 import os, time
 import pandas as pd
