@@ -19,20 +19,20 @@ def format_columns(file_path, etf_name):
     etf_df = pd.read_csv(file_path)
     #drop columns
     drop_columns =  ["OpenInt", "Volume", "Low", "High"]
-    etf_dropped = etf_df.drop(drop_columns, axis = 1, inplace = True)
+    etf_df.drop(drop_columns, axis = 1, inplace = True)
     #add value changed column
-    etf_dropped['change']= etf_dropped['Open'] - etf_dropped['Close']
+    etf_df['change']= etf_df['Close'] - etf_df['Open']
     #add the etf's name
-    etf_dropped['ETF_name'] = etf_name
+    etf_df['ETF_name'] = etf_name
     
-    return etf_dropped
+    return etf_df
  
 ### Coverts date from string to datetime format 
 # and creates new column with year only 
 
 def format_dates(formatted_df):
-    formatted_date = formatted_df
-    formatted_date['Date'] = pd.to_datetime(formatted_date.Date) 
+    formatted_date = pd.DataFrame(formatted_df)
+    formatted_date['Date'] = pd.to_datetime(formatted_date['Date']) 
     formatted_date['Year'] = formatted_date.Date.dt.year
     return formatted_date
 
