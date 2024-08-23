@@ -16,14 +16,16 @@ def format_mineral(file):
     
     #drop na rows
     formatted_df = mineral_df.dropna()
+    formatted_df = formatted_df.copy()
     
     #adjust dtypes
     formatted_df.date = pd.to_datetime(formatted_df.date)
     
     #add columns specifing year
     formatted_df['Year'] = formatted_df.date.dt.year
-    mineral_name = create_mineral_name(file)
-    formatted_df['Asset'] = mineral_name
+    
+    # add columns with assest description 
+    formatted_df['Asset'] = create_mineral_name(file)
     
     return formatted_df
 
@@ -39,7 +41,7 @@ def yearly_price(formatted_df):
     return start_end_dates
 
 def single_row_per_year(start_end_dates):
-    output_df = pd.DataFrame(columns = [ 'Year', 'Asset_name', 'Year_Open', 'Year_Close', 'Year_Change', 'Loss', 'Gain'])
+    output_df = pd.DataFrame(columns = ['Year', 'Asset_name', 'Year_Open', 'Year_Close', 'Year_Change', 'Loss', 'Gain'])
 
     #loop to generate new row in output database
     for i in start_end_dates.Year.unique():
@@ -47,14 +49,14 @@ def single_row_per_year(start_end_dates):
         #groups date data by year
         year_df = start_end_dates[start_end_dates.Year == i]
 
-        #uses objects to reference needed values
+        #uses objects to reference needed values     
         open = year_df.iloc[0].price
         close = year_df.iloc[1].price
         change = close - open
-        
+
         # creates mapping array 
-        new_row = {'Year':i, 'Asset_name': year_df.loc[0,'Asset'], 'Year_Open':open, 'Year_Close':close, 'Year_Change':change}
-        
+        new_row = {'Year':i, 'Asset_name':year_df.Asset.iloc[0], 'Year_Open':open, 'Year_Close':close, 'Year_Change':change}
+
         # inserts data into new row of the output dataframe
         output_df.loc[len(output_df)] = new_row
 
@@ -63,4 +65,20 @@ def single_row_per_year(start_end_dates):
 
     return output_df
     
-### The find_outliars function from ETF preprocessing can be used on this last step as well ###
+def find_mineral_outliars(df):
+    # sets the 80% and 20% boundries
+    etf_high_lim = df.Year_Change.quantile(.8)
+    etf_low_lim = df.Year_Change.quantile(.2)
+    
+    # compare the mean value of each year to the 20 and 80 limits previously set and 
+    # create a column documenting if it was outside the low/high lim
+
+    for i in range(len(df)):
+        if df.Year_Change.iloc[i] < etf_low_lim:
+            df.loc[i, 'Loss'] = 'yes'
+        elif df.Year_Change.iloc[i] > etf_high_lim:
+            df.loc[i,'Gain'] = 'yes'
+        else: 
+            continue
+    
+    return df
