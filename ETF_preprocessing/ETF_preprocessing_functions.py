@@ -26,10 +26,10 @@ def format_checking(file_path):
             return 1
         
     except pd.errors.ParserError as e:
-        print(f"Parsing error: {e}")
+        print(f"Parsing error: {e} in file:", create_etf_name(file_path), )
         return 1
     except Exception as e: 
-        print(file_path, "Formmating error!", )
+        print("Formmating error in file:", create_etf_name(file_path), )
         return 1
 
 def format_columns(checked_path, etf_name):
@@ -96,7 +96,7 @@ def find_yearly_limits(df):
             # inserts data into new row of the output dataframe
             output_df.loc[len(output_df)] = new_row
         except Exception as e:
-            print("date error!")
+            print("Missing Date Values in file:", year_df.iloc[0].ETF_name)
             return 1
 
     #fill NaNs with a default string value

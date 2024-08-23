@@ -16,7 +16,7 @@ import pandas as pd
 market_df = pd.DataFrame()
 
 # ID the directory housing the market data
-dir_path = 'Data/markets_test'
+dir_path = 'Data/market_ETFs'
 #List to house file path strings
 files = []
 
@@ -70,10 +70,12 @@ for file in files:
         cur_time = time.time()
         if f_count % 250 == 0: 
             print('file {} complete'.format(f_count))
+        if f_count % int(len(files)/5) == 0:
             print('Time Elapsed: ', cur_time - s_time)
             
 end_time = time.time()        
 print("Market Processing completed in:", end_time - s_time, "\n",
       "Market DataFrame Shape:", market_df.shape, "\n",
+      "No. of Files Successfully Processed:", len(files)-len(error_files), '\n',
       "No. of Files removed due to errors:", len(error_files))
 
