@@ -2,7 +2,10 @@ This is a document to track progress and error adjustments
 
 inital data review details
 
-ETF processing development files details
+
+
+####  PREPROCESSING ###
+
 
 ETF loop development
 When given a few hardcoded file paths to loop through, the loops formatted the data as expected. However, once looping through the 1000+ files,
@@ -11,6 +14,13 @@ incorrect columns, and incorrect dates. To start, all files that had formatting 
 machine learning models. This totaled 24 files and is likely a reasonable removal. If more questions or more time is alloted to the project, it
 is possible to check the individual files and make adjustments if possible to include the information however, it is currently beyond the scope
 and time allotment for this project. 
+
+Mineral price preprocessing
+the skeleton of the ETF development was used to complete this preprocessing as well. A few minor tweeks were made since the silver and gold prices
+will be seperate databases that are added in individually. I opted to keep the Open, Close and change values for the gold and silver DBs. While they may
+not be used in the initial training and analysis, having the values readily available for future developments of this concept seems prudent.
+
+
 
 
 

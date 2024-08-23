@@ -75,7 +75,7 @@ def find_yearly_limits(df):
     year = start_end_dates.Year.unique()
     
     # create dataframe that to place needed values in
-    output_df = pd.DataFrame(columns = [ 'Year','ETF_name','Year_Open', 'Year_Close', 'Year_Change', 'Loss', 'Gain'])
+    output_df = pd.DataFrame(columns = [ 'Year','Asset_name','Year_Open', 'Year_Close', 'Year_Change', 'Loss', 'Gain'])
 
 
     #loop to generate new row in output database
@@ -91,7 +91,7 @@ def find_yearly_limits(df):
             change = close - open
             
             # creates mapping array 
-            new_row = {'Year':i, 'ETF_name':year_df.iloc[0].ETF_name, 'Year_Open':open, 'Year_Close':close, 'Year_Change':change}
+            new_row = {'Year':i, 'Asset_name':year_df.iloc[0].ETF_name, 'Year_Open':open, 'Year_Close':close, 'Year_Change':change}
             
             # inserts data into new row of the output dataframe
             output_df.loc[len(output_df)] = new_row
