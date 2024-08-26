@@ -5,7 +5,7 @@ then processes the data by using the functions defined in preprocessing_function
 for machine learning. The output dataframe is named 'market_df'.
 """
 
-from ETF_preprocessing_functions import (create_etf_name, format_checking, format_columns, 
+from ETF_preprocessing.ETF_preprocessing_functions import (create_etf_name, format_checking, format_columns, 
     format_dates, find_yearly_limits, find_outliars)
 import os, time
 import pandas as pd
@@ -75,7 +75,8 @@ for file in files:
             
 end_time = time.time()        
 print("Market Processing completed in:", end_time - s_time, "\n",
-      "Market DataFrame Shape:", market_df.shape, "\n",
-      "No. of Files Successfully Processed:", len(files)-len(error_files), '\n',
-      "No. of Files removed due to errors:", len(error_files))
+    "Market DataFrame Shape:", market_df.shape, "\n",
+    "No. of Files Successfully Processed:", len(files)-len(error_files), '\n',
+    "No. of Files removed due to errors:", len(error_files))
+
 

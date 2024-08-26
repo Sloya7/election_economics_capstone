@@ -21,7 +21,7 @@ will be seperate databases that are added in individually. I opted to keep the O
 not be used in the initial training and analysis, having the values readily available for future developments of this concept seems prudent.
 
 
-
-
+Presidents
+This database initally presented a few challenges in combing the original 3 databases however, after reviewing what the scope of the project is, only one database was needed. While the origianl intent was to use the winner database as a dictionary system with the year and name as keys, this became quite complicated since the name were inconsistently formatted. Since string parsing became a hurdle, the alternative of using the one database and using the index position of the winner was adopted.  
 
 

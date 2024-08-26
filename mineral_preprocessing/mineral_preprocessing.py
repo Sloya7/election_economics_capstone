@@ -3,7 +3,7 @@ of the given mineral by year."""
 
 import pandas as pd
 import time, os
-from mineral_functions import (create_mineral_name, format_mineral, 
+from mineral_preprocessing.mineral_functions import (create_mineral_name, format_mineral, 
                             yearly_price, single_row_per_year, find_mineral_outliars)
 
 
