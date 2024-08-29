@@ -1,0 +1,13 @@
+#complete file structure review after revamp
+the file structure of this project needs some work. Since restructuring, every files needs to be run individually to ensure each still runs correctly. 
+
+#figure out the plotting situation for data compiled.
+
+
+#Complete ML data splits
+After that is complete, the ML can continue to be worked on. The code currently splits data into train and test prior to dividing out the y, x segments. 
+
+Examples show that all 4 can be done at once and this needs to be looks into since dividing after the fact might not pair the y and x values for testing indices correctly(maybe)
+
+#ML development
+consider if a ML is actually needed for this and what variable is accessable prior to elections. Maybe do prior 2 years or something more obtainable to make predictions.

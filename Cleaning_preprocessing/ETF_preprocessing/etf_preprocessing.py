@@ -1,14 +1,13 @@
 
+
+from Cleaning_preprocessing.config import *
+from Cleaning_preprocessing.ETF_preprocessing.etf_preprocessing_functions import (create_etf_name, format_checking, format_columns, 
+    format_dates, find_yearly_limits, find_outliars)
 """
 This file takes in a directory path with multiple Market data files. It checks to make sure the file is reasonable formatted,
 then processes the data by using the functions defined in preprocessing_functions.py to prepare the data 
 for machine learning. The output dataframe is named 'market_df'.
 """
-
-from ETF_preprocessing.ETF_preprocessing_functions import (create_etf_name, format_checking, format_columns, 
-    format_dates, find_yearly_limits, find_outliars)
-import os, time
-import pandas as pd
 
 
 # DataFrame to be populated
@@ -16,7 +15,7 @@ import pandas as pd
 market_df = pd.DataFrame()
 
 # ID the directory housing the market data
-dir_path = 'Data/market_ETFs'
+dir_path = 'Cleaning_preprocessing/Data/market_ETFs'
 #List to house file path strings
 files = []
 
@@ -73,10 +72,12 @@ for file in files:
         if f_count % int(len(files)/5) == 0:
             print('Time Elapsed: ', cur_time - s_time)
             
-end_time = time.time()        
+end_time = time.time()
+market_df.to_csv('Cleaned_data/markets', index = False)        
 print("Market Processing completed in:", end_time - s_time, "\n",
     "Market DataFrame Shape:", market_df.shape, "\n",
     "No. of Files Successfully Processed:", len(files)-len(error_files), '\n',
-    "No. of Files removed due to errors:", len(error_files))
+    "No. of Files removed due to errors:", len(error_files), '\n',
+    'Saved in Cleaned_data/markets')
 
 

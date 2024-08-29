@@ -1,11 +1,8 @@
-import pandas as pd 
-import os 
+from Cleaning_preprocessing.config import *
 
 # file locations used as reference during development
 
-
-
-file = 'Data/presidents/US Presidential Election Results - ResultsByCandidate.csv'
+file = 'Cleaning_preprocessing/Data/presidents/US Presidential Election Results - ResultsByCandidate.csv'
 candidate_df = pd.read_csv(file)
 
 
@@ -28,4 +25,5 @@ for y in candidate_df.ElectionYear.unique():
 
 #data needs transposed
 president_df = winners_df.transpose()
-print('President Winners Parsed')
+president_df.to_csv('Cleaned_data/presidents', index = False)
+print('President Winners Parsed and Saved in Cleaned_data/presidents')
