@@ -1,3 +1,9 @@
+"""This file defines the function that is used to assemble the 3 sources of data. It also used the presidential database as a reference point to create 
+relationships between the market and mineral data"""
+
+
+"""TODO: add the incubant column?"""
+
 from Create_ML.ML_config import *
 
 def combine_data():
@@ -20,7 +26,7 @@ def combine_data():
      
      
      
-    
+    #file locations
     president_df = pd.read_csv('Cleaned_data/presidents')
     mineral_df = pd.read_csv('Cleaned_data/minerals')
     market_df = pd.read_csv('Cleaned_data/markets')

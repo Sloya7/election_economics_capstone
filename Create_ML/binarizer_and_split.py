@@ -39,6 +39,7 @@ ML_data_list = [silver_ML_data, gold_ML_data, market_ML_data]
 X_list = {}
 y_list = {}
 
+
 #create the X and y data for the mineral in else case. Markets take a special approach in the 'if' case
 for df in ML_data_list:
     if df is market_ML_data:
@@ -56,8 +57,7 @@ for df in ML_data_list:
 
     # create remainder of values    
     X_list[asset_name] = df.drop(columns = ['Gain'], axis = 1)
-    
-print(X_list.keys())
+    print(X_list[asset_name].columns)
 
 #create train and test sample for X and y of each dataframe
 
@@ -67,6 +67,12 @@ gold_X_train, gold_X_test, gold_y_train, gold_y_test = train_test_split(X_list['
 
 market_X_train, market_X_test, market_y_train, market_y_test = train_test_split(X_list['market'],y_list['market'], random_state=42)
 
-silver_ML_package = [sil_X_train, sil_X_test, sil_y_train, sil_y_test]
-gold_ML_package = [gold_X_train, gold_X_test, gold_y_train, gold_y_test]
-market_ML_package = [market_X_train, market_X_test, market_y_train, market_y_test]
+# create validation data
+sil_X_train, sil_X_val, sil_y_train, sil_y_val = train_test_split(sil_X_train, sil_y_train, random_state=42)
+gold_X_train, gold_X_val, gold_y_train, gold_y_val = train_test_split(gold_X_train, gold_y_train, random_state=42)
+market_X_train, market_X_val, market_y_train, market_y_val = train_test_split(market_X_train, market_y_train, random_state=42)
+
+silver_ML_package = [sil_X_train, sil_X_val, sil_X_test, sil_y_train, sil_y_val, sil_y_test]
+gold_ML_package = [gold_X_train, gold_X_val, gold_X_test, gold_y_train, gold_y_val, gold_y_test]
+market_ML_package = [market_X_train, market_X_val, market_X_test, market_y_train, market_y_val, market_y_test]
+
