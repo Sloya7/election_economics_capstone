@@ -57,7 +57,6 @@ for df in ML_data_list:
 
     # create remainder of values    
     X_list[asset_name] = df.drop(columns = ['Gain'], axis = 1)
-    print(X_list[asset_name].columns)
 
 #create train and test sample for X and y of each dataframe
 

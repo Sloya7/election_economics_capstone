@@ -1,5 +1,6 @@
-""" Here we get to the exciting answers for all this data. 
-
+""" Here we get to tune a Random Forest Classifer using Grid Search. 
+Models are saved in a dictionary in the format of {'model name': model}
+where the model name refers to the type of data ie-gold, silver, market
 
 REFERENCE SAMPLE PACKAGE SETUP: 
 silver_ML_package = [sil_X_train, sil_X_val, sil_X_test, sil_y_train, sil_y_val, sil_y_test]
@@ -10,11 +11,16 @@ from Create_ML.ML_config import *
 from Create_ML.binarizer_and_split import silver_ML_package, gold_ML_package, market_ML_package
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
+import joblib 
 
+#makeing the classifier
 clf = RandomForestClassifier()
 
-packages = [silver_ML_package, gold_ML_package, market_ML_package]
 
+#data to be processed and where it will be saved
+packages = [silver_ML_package, gold_ML_package, market_ML_package]
+best_models = {}
+model_dir = '/home/sloya7/miniconda3/election_economics_capstone/saved_ML_models'
 
 #tested parameters
 param_grid = {
@@ -24,11 +30,9 @@ param_grid = {
     'min_samples_leaf' : [1,5,10,25],
 }
 
-best_models = {}
 
 
 def find_parameters(package):
-    
     #creates string name for the package to reference in best_models dictionary
     if package is market_ML_package:
         package_name = 'market'
@@ -59,14 +63,23 @@ def find_parameters(package):
  
     print("Accuracy of model:", param_search.best_score_)
     
-    best_models[package_name] = accurate_model 
+    best_models[package_name] = [accurate_model, package]
     
-    return
+    ### Saving the Model ###
+    
+    #create string that joins directory, name plus extension
+    trained_model_path = '/'.join([model_dir,package_name + '.pkl'])
+    
+    #save the model in the file location above
+    joblib.dump(best_models[package_name], trained_model_path)
+    print(f"Model {package_name} saved")
+    
+    
+    
+    return 
 
 for package in packages:
     find_parameters(package)
-print(len(best_models))
-
 
 
 
