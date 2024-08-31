@@ -49,12 +49,23 @@ def combine_data():
         year2_list.append(y + 2)
        
 
-    #creates new columns to establish a relationship between election years and market data
+    ### Create new columns to establish a relationship between election years and market data
+    
+    #new columns
     money_df['ElectCycle'] = int
     money_df['PriorYear'] = bool
     money_df['ElectYear'] = bool
     money_df['Year1'] = bool
     money_df['Year2'] = bool
+    
+    #imported data from presidents
+    money_df['Incumbent'] = int
+    money_df['PopularVote'] = int
+    money_df['PopVoteShare'] = float
+    money_df['ElectoralVotes'] = int
+    money_df['ElecVoteShare'] = float
+
+
 
     #assigns a boolan values for where in the election cycle a year is located
     money_df.loc[:,'ElectYear'] = money_df['Year'].isin(election_years)
@@ -75,7 +86,26 @@ def combine_data():
             money_df.loc[index,'ElectCycle'] = year_to_test - 2
         elif year_to_test % 4 == 0:
             money_df.loc[index,'ElectCycle'] = year_to_test
-
-    print("Mineral, Market and President DBs combined into:", money_df.columns)
+          
+    #fills election related values based on the election year column
+    for index, c in enumerate(money_df['ElectCycle']):
+        for y in election_years:
+            if c == y:
+                money_df.loc[index,'Incumbent'] = president_df[president_df['ElectionYear'] == y]['Incumbent?'].values[0]
+                money_df.loc[index,'PopularVote'] = president_df[president_df['ElectionYear'] == y]['PopularVote'].values[0]
+                money_df.loc[index,'PopVoteShare'] = president_df[president_df['ElectionYear'] == y]['PopVoteShare'].values[0]
+                money_df.loc[index,'ElectoralVotes'] = president_df[president_df['ElectionYear'] == y]['ElectoralVotes'].values[0]
+                money_df.loc[index,'ElecVoteShare'] = president_df[president_df['ElectionYear'] == y]['ElecVoteShare'].values[0]
     
+    
+    
+    print("Mineral, Market and President DBs combined into:", money_df.columns)
+
     return money_df
+
+
+
+
+
+### TODO: concat 'Incumbent?   CandParty PopularVote PopVoteShare ElectoralVotes ElecVoteShare' columns
+### into money_df using Election Year as key

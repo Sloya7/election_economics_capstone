@@ -1,60 +1,60 @@
-ElectionYear,CandidateName,Incumbent?,CandParty,PopularVote,PopVoteShare,ElectoralVotes,ElecVoteShare
-1788,George Washington,N,Independent,"39,624",100.00%,69,100.00%
-1792,George Washington,Y,Independent,"28,300",100.00%,132,100.00%
-1796,John Adams,N,Federalist,"35,726",53.45%,71,51.45%
-1800,Thomas Jefferson,N,Democratic-Republican,"45,467",60.51%,73,52.90%
-1804,Thomas Jefferson,Y,Democratic-Republican,"104,110",72.79%,162,92.05%
-1808,James Madison,N,Democratic-Republican,"124,732",64.73%,122,69.71%
-1812,James Madison,Y,Democratic-Republican,"140,431",50.37%,128,58.99%
-1816,James Monroe,N,Democratic-Republican,"76,592",68.16%,183,84.33%
-1820,James Monroe,Y,Democratic-Republican,"87,343",80.61%,231,99.57%
-1824,Andrew Jackson,N,Democratic-Republican,"151,271",41.35%,99,37.93%
-1828,Andrew Jackson,N,Democratic,"638,348",55.33%,171,65.52%
-1832,Andrew Jackson,Y,Democratic,"701,780",54.23%,219,76.57%
-1836,Martin Van Buren,N,Democratic,"764,176",50.83%,170,57.82%
-1840,William H. Harrison,N,Whig,"1,275,390",52.88%,234,79.59%
-1844,James K. Polk,N,Democratic,"1,339,494",49.54%,170,61.82%
-1848,Zachary Taylor,N,Whig,"1,361,393",47.28%,163,56.21%
-1852,Franklin Pierce,N,Democratic,"1,607,510",50.84%,254,85.81%
-1856,James Buchanan Jr.,N,Democratic,"1,836,072",45.26%,174,58.78%
-1860,Abraham Lincoln,N,Republican,"1,865,908",39.82%,180,59.41%
-1864,Abraham Lincoln,Y,Republican,"2,218,388",55.02%,212,90.99%
-1868,Ulysses S. Grant,N,Republican,"3,013,650",52.66%,214,72.79%
-1872,Ulysses S. Grant,Y,Republican,"3,598,235",55.63%,286,81.25%
-1876,Rutherford B. Hayes,N,Republican,"4,034,142",47.92%,185,50.14%
-1880,James A. Garfield,N,Republican,"4,454,443",48.32%,214,57.99%
-1884,Grover Cleveland,N,Democratic,"4,914,482",48.85%,219,54.61%
-1888,Benjamin Harrison,N,Republican,"5,443,892",47.82%,233,58.10%
-1892,Grover Cleveland,N,Democratic,"5,553,898",46.02%,277,62.39%
-1896,William McKinley Jr.,N,Republican,"7,111,607",51.03%,271,60.63%
-1900,William McKinley Jr.,Y,Republican,"7,228,864",51.64%,292,65.32%
-1904,Theodore Roosevelt Jr.,Y,Republican,"7,630,457",56.42%,336,70.59%
-1908,William H. Taft,N,Republican,"7,678,335",51.57%,321,66.46%
-1912,Woodrow Wilson,N,Democratic,"6,296,284",41.84%,435,81.92%
-1916,Woodrow Wilson,Y,Democratic,"9,126,868",49.24%,277,52.17%
-1920,Warren G. Harding,N,Republican,"16,144,093",60.32%,404,76.08%
-1924,Calvin Collidge Jr.,Y,Republican,"15,723,789",54.04%,382,71.94%
-1928,Herbert C. Hoover,N,Republican,"21,427,123",58.21%,444,83.62%
-1932,Franklin D. Roosevelt,N,Democratic,"22,821,277",57.41%,472,88.89%
-1936,Franklin D. Roosevelt,Y,Democratic,"27,752,648",60.80%,523,98.49%
-1940,Franklin D. Roosevelt,Y,Democratic,"27,313,945",54.74%,449,84.56%
-1944,Franklin D. Roosevelt,Y,Democratic,"25,612,916",53.39%,432,81.36%
-1948,Harry S. Truman,Y,Democratic,"24,179,347",49.55%,303,57.06%
-1952,Dwight D. Eisenhower,N,Republican,"34,075,529",55.18%,442,83.24%
-1956,Dwight D. Eisenhower,Y,Republican,"35,579,180",57.37%,457,86.06%
-1960,John F. Kennedy,N,Democratic,"34,220,984",49.72%,303,56.42%
-1964,Lyndon B. Johnson,Y,Democratic,"43,127,041",61.05%,486,90.33%
-1968,Richard M. Nixon,N,Republican,"31,783,783",43.42%,301,55.95%
-1972,Richard M. Nixon,Y,Republican,"47,168,710",60.67%,520,96.65%
-1976,James E. Carter Jr.,N,Democratic,"40,831,881",50.08%,297,55.20%
-1980,Ronald W. Reagan,N,Republican,"43,903,230",50.75%,489,90.89%
-1984,Ronald W. Reagan,Y,Republican,"54,455,472",58.77%,525,97.58%
-1988,George H. W. Bush,N,Republican,"48,886,597",53.37%,426,79.18%
-1992,Bill Clinton,N,Democratic,"44,909,889",43.01%,370,68.77%
-1996,Bill Clinton,Y,Democratic,"47,401,185",49.23%,379,70.45%
-2000,George W. Bush,N,Republican,"50,456,002",47.86%,271,50.37%
-2004,George W. Bush,Y,Republican,"62,040,610",50.73%,286,53.16%
-2008,Barack H. Obama II,N,Democratic,"69,498,516",52.93%,365,67.84%
-2012,Barack H. Obama II,Y,Democratic,"65,915,795",51.06%,332,61.71%
-2016,Donald J. Trump,N,Republican,"62,984,828",46.09%,306,56.88%
-2020,Joseph R. Biden Jr.,N,Democratic,"81,268,924",51.31%,306,56.88%
+ElectionYear,CandidateName,Incumbent?,PopularVote,PopVoteShare,ElectoralVotes,ElecVoteShare
+1788,George Washington,0,39624,100.0,69,100.0
+1792,George Washington,1,28300,100.0,132,100.0
+1796,John Adams,0,35726,53.45,71,51.45
+1800,Thomas Jefferson,0,45467,60.51,73,52.9
+1804,Thomas Jefferson,1,104110,72.79,162,92.05
+1808,James Madison,0,124732,64.73,122,69.71
+1812,James Madison,1,140431,50.37,128,58.99
+1816,James Monroe,0,76592,68.16,183,84.33
+1820,James Monroe,1,87343,80.61,231,99.57
+1824,Andrew Jackson,0,151271,41.35,99,37.93
+1828,Andrew Jackson,0,638348,55.33,171,65.52
+1832,Andrew Jackson,1,701780,54.23,219,76.57
+1836,Martin Van Buren,0,764176,50.83,170,57.82
+1840,William H. Harrison,0,1275390,52.88,234,79.59
+1844,James K. Polk,0,1339494,49.54,170,61.82
+1848,Zachary Taylor,0,1361393,47.28,163,56.21
+1852,Franklin Pierce,0,1607510,50.84,254,85.81
+1856,James Buchanan Jr.,0,1836072,45.26,174,58.78
+1860,Abraham Lincoln,0,1865908,39.82,180,59.41
+1864,Abraham Lincoln,1,2218388,55.02,212,90.99
+1868,Ulysses S. Grant,0,3013650,52.66,214,72.79
+1872,Ulysses S. Grant,1,3598235,55.63,286,81.25
+1876,Rutherford B. Hayes,0,4034142,47.92,185,50.14
+1880,James A. Garfield,0,4454443,48.32,214,57.99
+1884,Grover Cleveland,0,4914482,48.85,219,54.61
+1888,Benjamin Harrison,0,5443892,47.82,233,58.1
+1892,Grover Cleveland,0,5553898,46.02,277,62.39
+1896,William McKinley Jr.,0,7111607,51.03,271,60.63
+1900,William McKinley Jr.,1,7228864,51.64,292,65.32
+1904,Theodore Roosevelt Jr.,1,7630457,56.42,336,70.59
+1908,William H. Taft,0,7678335,51.57,321,66.46
+1912,Woodrow Wilson,0,6296284,41.84,435,81.92
+1916,Woodrow Wilson,1,9126868,49.24,277,52.17
+1920,Warren G. Harding,0,16144093,60.32,404,76.08
+1924,Calvin Collidge Jr.,1,15723789,54.04,382,71.94
+1928,Herbert C. Hoover,0,21427123,58.21,444,83.62
+1932,Franklin D. Roosevelt,0,22821277,57.41,472,88.89
+1936,Franklin D. Roosevelt,1,27752648,60.8,523,98.49
+1940,Franklin D. Roosevelt,1,27313945,54.74,449,84.56
+1944,Franklin D. Roosevelt,1,25612916,53.39,432,81.36
+1948,Harry S. Truman,1,24179347,49.55,303,57.06
+1952,Dwight D. Eisenhower,0,34075529,55.18,442,83.24
+1956,Dwight D. Eisenhower,1,35579180,57.37,457,86.06
+1960,John F. Kennedy,0,34220984,49.72,303,56.42
+1964,Lyndon B. Johnson,1,43127041,61.05,486,90.33
+1968,Richard M. Nixon,0,31783783,43.42,301,55.95
+1972,Richard M. Nixon,1,47168710,60.67,520,96.65
+1976,James E. Carter Jr.,0,40831881,50.08,297,55.2
+1980,Ronald W. Reagan,0,43903230,50.75,489,90.89
+1984,Ronald W. Reagan,1,54455472,58.77,525,97.58
+1988,George H. W. Bush,0,48886597,53.37,426,79.18
+1992,Bill Clinton,0,44909889,43.01,370,68.77
+1996,Bill Clinton,1,47401185,49.23,379,70.45
+2000,George W. Bush,0,50456002,47.86,271,50.37
+2004,George W. Bush,1,62040610,50.73,286,53.16
+2008,Barack H. Obama II,0,69498516,52.93,365,67.84
+2012,Barack H. Obama II,1,65915795,51.06,332,61.71
+2016,Donald J. Trump,0,62984828,46.09,306,56.88
+2020,Joseph R. Biden Jr.,0,81268924,51.31,306,56.88
