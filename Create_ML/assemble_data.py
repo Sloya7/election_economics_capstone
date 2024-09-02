@@ -11,7 +11,8 @@ def combine_data():
     #checks for preprocessed files and processed them if needed
     csv_names = {'markets': 'Cleaning_preprocessing/ETF_preprocessing/etf_preprocessing.py',
              'presidents': 'Cleaning_preprocessing/President_preprocessing/president_preprocessing.py', 
-             'minerals': 'Cleaning_preprocessing/Mineral_preprocessing/mineral_preprocessing.py'}
+             'minerals': 'Cleaning_preprocessing/Mineral_preprocessing/mineral_preprocessing.py',
+             'stocks': 'Cleaning_preprocessing/ETF_preprocessing/stock_preprocessing.py'}
     for n in csv_names:
         print('Checking for file', n)
         if os.path.exists('Cleaned_data/'+n):
@@ -30,9 +31,10 @@ def combine_data():
     president_df = pd.read_csv('Cleaned_data/presidents')
     mineral_df = pd.read_csv('Cleaned_data/minerals')
     market_df = pd.read_csv('Cleaned_data/markets')
+    stock_df = pd.read_csv('Cleaned_data/stocks')
         
     # Combines the markets and mineral dataframes 
-    money_df = pd.concat([mineral_df, market_df], axis=0, ignore_index=True)
+    money_df = pd.concat([mineral_df, market_df,stock_df], axis=0, ignore_index=True)
     
     # Initialize lists for storing prior and future years related to election years
     prior_years = []
@@ -98,8 +100,8 @@ def combine_data():
                 money_df.loc[index,'ElecVoteShare'] = president_df[president_df['ElectionYear'] == y]['ElecVoteShare'].values[0]
     
         
-    """ drop_cols = ['Year_Open', 'Year_Close', 'Year_Change']
-    money_df.drop(columns = drop_cols, axis=1, inplace=True) """
+    drop_cols = ['Year_Change', 'Year_Open','Year_Close','Loss']
+    money_df.drop(columns = drop_cols, axis=1, inplace=True)
     
     
     print("Mineral, Market and President DBs combined into:", money_df.columns)

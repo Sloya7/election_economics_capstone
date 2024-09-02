@@ -38,9 +38,14 @@ def format_columns(checked_path, etf_name):
     checked_path.drop(drop_columns, axis = 1, inplace = True)
     
     #add value changed column
-    checked_path['change']= checked_path['Close'] - checked_path['Open']
-    #add the etf's name
-    checked_path['ETF_name'] = etf_name
+    try: 
+        checked_path['change']= (checked_path['Close']).astype(float) - checked_path['Open'].astype(float)
+        #add the etf's name
+        checked_path['ETF_name'] = etf_name
+    except:
+        print("Close or Open unable to conver to numeric:", create_etf_name(etf_name))
+        return 1
+        
     
     return checked_path
  
@@ -51,8 +56,12 @@ def format_dates(formatted_df):
     if type(formatted_df) == int: 
         return 1
     formatted_date = pd.DataFrame(formatted_df)
-    formatted_date['Date'] = pd.to_datetime(formatted_date['Date']) 
-    formatted_date['Year'] = formatted_date.Date.dt.year
+    try:
+        formatted_date['Date'] = pd.to_datetime(formatted_date['Date']) 
+        formatted_date['Year'] = formatted_date.Date.dt.year
+    except:
+        print("Error in formmating date")
+        return 1
     return formatted_date
 
 
@@ -77,7 +86,7 @@ def find_yearly_limits(df):
 
 
     #loop to generate new row in output database
-    for i in start_end_dates.Year.unique():
+    for i in year:
 
         #groups date data by year
         year_df = start_end_dates[start_end_dates.Year == i]

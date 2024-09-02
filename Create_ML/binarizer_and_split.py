@@ -24,7 +24,7 @@ combined_data.Asset_name = combined_data.Asset_name.astype(str)
 
 #replace values to transform 'PriorYear', 'ElectYear', 'Year1', 'Year2', 'Gain' to binary
 
-bin_columns = ['PriorYear','ElectYear', 'Year1', 'Year2', 'Gain', 'Loss']
+bin_columns = ['PriorYear','ElectYear', 'Year1', 'Year2', 'Gain']
 
 for c in bin_columns:
     combined_data[c] = combined_data[c].replace({True: 1, False: 0, 'yes': 1, 'no' : 0}).astype(int)
@@ -75,3 +75,4 @@ silver_ML_package = [sil_X_train, sil_X_val, sil_X_test, sil_y_train, sil_y_val,
 gold_ML_package = [gold_X_train, gold_X_val, gold_X_test, gold_y_train, gold_y_val, gold_y_test]
 market_ML_package = [market_X_train, market_X_val, market_X_test, market_y_train, market_y_val, market_y_test]
 
+print(market_X_train.Year.value_counts())

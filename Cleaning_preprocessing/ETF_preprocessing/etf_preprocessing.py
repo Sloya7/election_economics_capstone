@@ -78,6 +78,6 @@ print("Market Processing completed in:", end_time - s_time, "\n",
     "Market DataFrame Shape:", market_df.shape, "\n",
     "No. of Files Successfully Processed:", len(files)-len(error_files), '\n',
     "No. of Files removed due to errors:", len(error_files), '\n',
-    'Saved in Cleaned_data/markets')
-
+    'Saved in Cleaned_data/markets'
+)
 

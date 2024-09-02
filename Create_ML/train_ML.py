@@ -14,7 +14,7 @@ from sklearn.model_selection import GridSearchCV
 import joblib 
 
 #makeing the classifier
-clf = RandomForestClassifier()
+clf = RandomForestClassifier(random_state=42)
 
 
 #data to be processed and where it will be saved
