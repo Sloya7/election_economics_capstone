@@ -22,9 +22,9 @@ combined_data = combine_data()
 #correct the type of Electcycle
 combined_data.Asset_name = combined_data.Asset_name.astype(str)
 
-#replace values to transform 'PriorYear', 'ElectYear', 'Year1', 'Year2', 'Gain' to binary
+#replace values to transform 'PriorYear', 'ElectYear', 'Year1', 'Year2', 'Loss' or 'Gain' to binary
 
-bin_columns = ['PriorYear','ElectYear', 'Year1', 'Year2', 'Gain']
+bin_columns = ['Loss'] #unused currently 'PriorYear','ElectYear', 'Year1', 'Year2'
 
 for c in bin_columns:
     combined_data[c] = combined_data[c].replace({True: 1, False: 0, 'yes': 1, 'no' : 0}).astype(int)
@@ -53,10 +53,10 @@ for df in ML_data_list:
     df.drop(columns = 'Asset_name', axis =1, inplace=True)
 
     # create target value
-    y_list[asset_name] = df['Gain']
+    y_list[asset_name] = df['Loss']
 
     # create remainder of values    
-    X_list[asset_name] = df.drop(columns = ['Gain'], axis = 1)
+    X_list[asset_name] = df.drop(columns = ['Loss'], axis = 1)
 
 #create train and test sample for X and y of each dataframe
 
