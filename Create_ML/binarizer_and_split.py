@@ -22,7 +22,7 @@ combined_data = combine_data()
 #correct the type of Electcycle
 combined_data.Asset_name = combined_data.Asset_name.astype(str)
 
-#replace values to transform 'PriorYear', 'ElectYear', 'Year1', 'Year2', 'Gain', 'Loss' to binary
+#replace values to transform 'PriorYear', 'ElectYear', 'Year1', 'Year2', 'Gain' to binary
 
 bin_columns = ['PriorYear','ElectYear', 'Year1', 'Year2', 'Gain', 'Loss']
 
