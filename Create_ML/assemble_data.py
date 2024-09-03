@@ -55,25 +55,25 @@ def combine_data():
     
     #new columns
     money_df['ElectCycle'] = int
-    """ money_df['PriorYear'] = bool
+    money_df['PriorYear'] = bool
     money_df['ElectYear'] = bool
     money_df['Year1'] = bool
-    money_df['Year2'] = bool """
+    money_df['Year2'] = bool
     
     #imported data from presidents
-    money_df['Incumbent'] = int
+    """ money_df['Incumbent'] = int
     money_df['PopularVote'] = int
     money_df['PopVoteShare'] = float
     money_df['ElectoralVotes'] = int
-    money_df['ElecVoteShare'] = float
+    money_df['ElecVoteShare'] = float """
 
 
 
     #assigns a boolan values for where in the election cycle a year is located
-    """  money_df.loc[:,'ElectYear'] = money_df['Year'].isin(election_years)
+    money_df.loc[:,'ElectYear'] = money_df['Year'].isin(election_years)
     money_df.loc[:,'PriorYear'] = money_df['Year'].isin(prior_years)
     money_df.loc[:,'Year1'] = money_df['Year'].isin(year1_list)
-    money_df.loc[:,'Year2'] = money_df['Year'].isin(year2_list) """
+    money_df.loc[:,'Year2'] = money_df['Year'].isin(year2_list)
 
     #enumerates over the money_df to assign which election cycle a specific instance belongs to 
     for index, y in enumerate(money_df.Year):
@@ -90,14 +90,14 @@ def combine_data():
             money_df.loc[index,'ElectCycle'] = year_to_test
           
     #fills election related values based on the election year column
-    for index, c in enumerate(money_df['ElectCycle']):
+        """     for index, c in enumerate(money_df['ElectCycle']):
         for y in election_years:
             if c == y:
                 money_df.loc[index,'Incumbent'] = president_df[president_df['ElectionYear'] == y]['Incumbent?'].values[0]
                 money_df.loc[index,'PopularVote'] = president_df[president_df['ElectionYear'] == y]['PopularVote'].values[0]
                 money_df.loc[index,'PopVoteShare'] = president_df[president_df['ElectionYear'] == y]['PopVoteShare'].values[0]
                 money_df.loc[index,'ElectoralVotes'] = president_df[president_df['ElectionYear'] == y]['ElectoralVotes'].values[0]
-                money_df.loc[index,'ElecVoteShare'] = president_df[president_df['ElectionYear'] == y]['ElecVoteShare'].values[0]
+                money_df.loc[index,'ElecVoteShare'] = president_df[president_df['ElectionYear'] == y]['ElecVoteShare'].values[0] """
     
         
     drop_cols = ['Year_Change', 'Year_Open','Year_Close','Gain']
