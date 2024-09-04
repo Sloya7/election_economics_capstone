@@ -43,5 +43,6 @@ president_df['ElectoralVotes'] = president_df['ElectoralVotes'].astype(str).repl
 president_df['PopularVote'] = pd.to_numeric(president_df['PopularVote'])
 president_df['ElectoralVotes'] = pd.to_numeric(president_df['ElectoralVotes'])
     
-president_df.to_csv('Cleaned_data/presidents', encoding='utf-8', index = False)
+president_df.to_csv('Cleaned_data/presidents.csv', encoding='utf-8', index = False)
+president_df.to_csv('/mnt/d/DA School Files/WGU/capstone/presidents.csv', encoding='utf-8', index = False)
 print('President Winners Parsed and Saved in Cleaned_data/presidents')

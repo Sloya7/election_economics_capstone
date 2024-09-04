@@ -30,9 +30,8 @@ def find_importance():
             print('\n', name, 'feature importance:', '\n', importance_df)
     return  
 
-if num_models >=2:
-    find_importance()
+
+find_importance()
 
 
 
-#TODO getting an array of 0s

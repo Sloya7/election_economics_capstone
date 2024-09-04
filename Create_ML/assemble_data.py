@@ -9,9 +9,9 @@ from Create_ML.ML_config import *
 def combine_data():
 
     #checks for preprocessed files and processed them if needed
-    csv_names = {'markets': 'Cleaning_preprocessing/ETF_preprocessing/etf_preprocessing.py',
-             'presidents': 'Cleaning_preprocessing/President_preprocessing/president_preprocessing.py', 
-             'minerals': 'Cleaning_preprocessing/Mineral_preprocessing/mineral_preprocessing.py'}
+    csv_names = {'markets.csv': 'Cleaning_preprocessing/ETF_preprocessing/etf_preprocessing.py',
+             'presidents.csv': 'Cleaning_preprocessing/President_preprocessing/president_preprocessing.py', 
+             'minerals.csv': 'Cleaning_preprocessing/Mineral_preprocessing/mineral_preprocessing.py'}
     for n in csv_names:
         print('Checking for file', n)
         if os.path.exists('Cleaned_data/'+n):
@@ -27,9 +27,9 @@ def combine_data():
      
      
     #file locations
-    president_df = pd.read_csv('Cleaned_data/presidents')
-    mineral_df = pd.read_csv('Cleaned_data/minerals')
-    market_df = pd.read_csv('Cleaned_data/markets')
+    president_df = pd.read_csv('Cleaned_data/presidents.csv')
+    mineral_df = pd.read_csv('Cleaned_data/minerals.csv')
+    market_df = pd.read_csv('Cleaned_data/markets.csv')
         
     # Combines the markets and mineral dataframes 
     money_df = pd.concat([mineral_df, market_df], axis=0, ignore_index=True)
@@ -60,9 +60,7 @@ def combine_data():
     
     #imported data from presidents
     money_df['Incumbent'] = int
-    money_df['PopularVote'] = int
     money_df['PopVoteShare'] = float
-    money_df['ElectoralVotes'] = int
     money_df['ElecVoteShare'] = float
 
 
@@ -92,9 +90,7 @@ def combine_data():
         for y in election_years:
             if c == y:
                 money_df.loc[index,'Incumbent'] = president_df[president_df['ElectionYear'] == y]['Incumbent?'].values[0]
-                money_df.loc[index,'PopularVote'] = president_df[president_df['ElectionYear'] == y]['PopularVote'].values[0]
                 money_df.loc[index,'PopVoteShare'] = president_df[president_df['ElectionYear'] == y]['PopVoteShare'].values[0]
-                money_df.loc[index,'ElectoralVotes'] = president_df[president_df['ElectionYear'] == y]['ElectoralVotes'].values[0]
                 money_df.loc[index,'ElecVoteShare'] = president_df[president_df['ElectionYear'] == y]['ElecVoteShare'].values[0]
 
       

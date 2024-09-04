@@ -21,3 +21,8 @@ reinteration of concept:
 made the model and got feature importance including the open/close data. found that open and change were in the higher ranks of importance.
 This intuitively makes sense and bring some other questions up for exploration however, to answer the original question, I decided to remove 
 the open, close, loss, change data. all that data instead, serves to get to the data point of "was it a gainful year?"
+
+
+
+feature importance:
+high degree of coorelation- reduced number of variables

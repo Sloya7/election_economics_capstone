@@ -24,10 +24,10 @@ model_dir = '/home/sloya7/miniconda3/election_economics_capstone/saved_ML_models
 
 #tested parameters
 param_grid = {
-    'n_estimators' : [5,10,25,50,75],
-    'max_depth' : [5,10,25,50],
-    'min_samples_split' : [2,5,10,20],
-    'min_samples_leaf' : [5,10,25],
+    'n_estimators' : [4,10,25,50,75],
+    'max_depth' : [1,4,10,25,50],
+    'min_samples_split' : [2,4,5,10,20],
+    'min_samples_leaf' : [4,5,10,25]
 }
 
 def ensure_numerics(package):
