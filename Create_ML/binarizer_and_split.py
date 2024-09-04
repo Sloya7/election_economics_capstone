@@ -25,12 +25,11 @@ combined_data.Asset_name = combined_data.Asset_name.astype(str)
 
 #replace values to transform 'PriorYear', 'ElectYear', 'Year1', 'Year2', 'Gain' to binary
 
-bin_columns = ['PriorYear','ElectYear', 'Year1', 'Year2', 'Gain']
+bin_columns = ['Gain'] #other possible columns: 'PriorYear','ElectYear', 'Year1', 'Year2', 
 
 for c in bin_columns:
     combined_data[c] = combined_data[c].replace({True: 1, False: 0, 'yes': 1, 'no' : 0}).astype(int)
 
-int_columns = []
 
 
 # since prep for the ML is complete, seperate out the minerals vs market info for independent ML application

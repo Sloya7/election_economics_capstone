@@ -94,7 +94,7 @@ def combine_data():
                 money_df.loc[index,'ElecVoteShare'] = president_df[president_df['ElectionYear'] == y]['ElecVoteShare'].values[0]
 
       
-    drop_cols = ['Year_Open', 'Year_Close', 'Year_Change', 'Loss','Year']
+    drop_cols = ['Year_Open', 'Year_Close', 'Year_Change', 'Loss','Year', 'ElectCycle']
     money_df = money_df.drop(columns = drop_cols, axis=1)
     
     
