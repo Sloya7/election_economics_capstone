@@ -52,7 +52,6 @@ def find_parameters(package):
     
     #output to track progress
     print('Starting', package_name, 'parameter testing.')
-    print(package[0].info())
     
     #some columns turned into objects while being processed. ensure all are numeric
 

@@ -45,7 +45,7 @@ for file in files:
     
     
 end_time = time.time()
-mineral_df.to_csv('Cleaned_data/minerals', index = False)        
+mineral_df.to_csv('Cleaned_data/minerals',  encoding='utf-8', index = False)        
 print("Mineral Processing completed in:", end_time - s_time, "\n",
       "Mineral DataFrame Shape:", mineral_df.shape, '\n',
       'Saved in Cleaned_data/minerals')

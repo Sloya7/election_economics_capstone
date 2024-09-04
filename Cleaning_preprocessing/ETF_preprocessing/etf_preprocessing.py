@@ -73,7 +73,7 @@ for file in files:
             print('Time Elapsed: ', cur_time - s_time)
             
 end_time = time.time()
-market_df.to_csv('Cleaned_data/markets', index = False)        
+market_df.to_csv('Cleaned_data/markets', encoding='utf-8', index = False)        
 print("Market Processing completed in:", end_time - s_time, "\n",
     "Market DataFrame Shape:", market_df.shape, "\n",
     "No. of Files Successfully Processed:", len(files)-len(error_files), '\n',
