@@ -18,16 +18,20 @@ pd.set_option('future.no_silent_downcasting', True)
 
 # creates the combined dataframe
 combined_data = combine_data()
+print("Assembling and Splitting data")
 
 #correct the type of Electcycle
 combined_data.Asset_name = combined_data.Asset_name.astype(str)
 
 #replace values to transform 'PriorYear', 'ElectYear', 'Year1', 'Year2', 'Gain' to binary
 
-bin_columns = ['PriorYear','ElectYear', 'Year1', 'Year2', 'Gain', 'Loss']
+bin_columns = ['PriorYear','ElectYear', 'Year1', 'Year2', 'Gain']
 
 for c in bin_columns:
     combined_data[c] = combined_data[c].replace({True: 1, False: 0, 'yes': 1, 'no' : 0}).astype(int)
+
+int_columns = []
+
 
 # since prep for the ML is complete, seperate out the minerals vs market info for independent ML application
 silver_ML_data = combined_data[combined_data['Asset_name'] == 'silver_price']
@@ -47,22 +51,23 @@ for df in ML_data_list:
         
     else:
         #find assets str name
-        asset_name = df.iloc[2,1]
-        
+        asset_name = df.iloc[2,0]
+    
     #remove the last non numeric column
-    df.drop(columns = 'Asset_name', axis =1, inplace=True)
+    df = df.drop(columns = 'Asset_name', axis =1)
 
     # create target value
     y_list[asset_name] = df['Gain']
 
     # create remainder of values    
     X_list[asset_name] = df.drop(columns = ['Gain'], axis = 1)
+    
 
 #create train and test sample for X and y of each dataframe
 
-sil_X_train, sil_X_test, sil_y_train, sil_y_test = train_test_split(X_list['silver_price'],y_list['silver_price'] , random_state=42)
-
 gold_X_train, gold_X_test, gold_y_train, gold_y_test = train_test_split(X_list['gold_price'],y_list['gold_price'], random_state=42)
+
+sil_X_train, sil_X_test, sil_y_train, sil_y_test = train_test_split(X_list['silver_price'],y_list['silver_price'] , random_state=42)
 
 market_X_train, market_X_test, market_y_train, market_y_test = train_test_split(X_list['market'],y_list['market'], random_state=42)
 
@@ -75,3 +80,8 @@ silver_ML_package = [sil_X_train, sil_X_val, sil_X_test, sil_y_train, sil_y_val,
 gold_ML_package = [gold_X_train, gold_X_val, gold_X_test, gold_y_train, gold_y_val, gold_y_test]
 market_ML_package = [market_X_train, market_X_val, market_X_test, market_y_train, market_y_val, market_y_test]
 
+packages = [silver_ML_package, gold_ML_package, market_ML_package]
+
+    
+        
+print("Data split into Training, Validating and Testing")

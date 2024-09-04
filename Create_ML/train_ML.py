@@ -30,6 +30,15 @@ param_grid = {
     'min_samples_leaf' : [5,10,25],
 }
 
+def ensure_numerics(package):
+    for i in range(len(package)): 
+        Xs = [0,1,2]
+        if i in Xs:
+            for c in package[i].columns:
+                if package[i][c].dtype == object:
+                    package[i][c] = pd.to_numeric(package[i][c])
+        else:
+            pd.to_numeric(package[i])
 
 
 def find_parameters(package):
@@ -40,14 +49,18 @@ def find_parameters(package):
         package_name = 'gold'
     if package is silver_ML_package:
         package_name = 'silver'
-        
+    
     #output to track progress
     print('Starting', package_name, 'parameter testing.')
-    s_time = time.time()
+    print(package[0].info())
     
+    #some columns turned into objects while being processed. ensure all are numeric
+
+    
+    
+    s_time = time.time()
     """ for array in package:
         print(array.head()) """
-    
     #defines the RandomForestClassifier using the packages '_X_train' and package '_y_train' data
     package_clf = clf.fit(package[0], package[3])
     
@@ -60,7 +73,7 @@ def find_parameters(package):
     print('Parameter Testing Took:', format(e_time - s_time,'.2f'))
 
     accurate_model = param_search.best_estimator_
- 
+
     print("Accuracy of model:", param_search.best_score_)
     
     best_models[package_name] = [accurate_model, package]
@@ -73,12 +86,11 @@ def find_parameters(package):
     #save the model in the file location above
     joblib.dump(best_models[package_name], trained_model_path)
     print(f"Model {package_name} saved")
-    
-    
-    
+
     return 
 
 for package in packages:
+    ensure_numerics(package)
     find_parameters(package)
 
 

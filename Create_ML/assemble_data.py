@@ -96,10 +96,10 @@ def combine_data():
                 money_df.loc[index,'PopVoteShare'] = president_df[president_df['ElectionYear'] == y]['PopVoteShare'].values[0]
                 money_df.loc[index,'ElectoralVotes'] = president_df[president_df['ElectionYear'] == y]['ElectoralVotes'].values[0]
                 money_df.loc[index,'ElecVoteShare'] = president_df[president_df['ElectionYear'] == y]['ElecVoteShare'].values[0]
-    
-        
-    """ drop_cols = ['Year_Open', 'Year_Close', 'Year_Change']
-    money_df.drop(columns = drop_cols, axis=1, inplace=True) """
+
+      
+    drop_cols = ['Year_Open', 'Year_Close', 'Year_Change', 'Loss','Year']
+    money_df = money_df.drop(columns = drop_cols, axis=1)
     
     
     print("Mineral, Market and President DBs combined into:", money_df.columns)
