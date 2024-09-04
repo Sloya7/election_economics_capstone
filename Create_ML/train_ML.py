@@ -30,6 +30,16 @@ param_grid = {
     'min_samples_leaf' : [5,10,25],
 }
 
+def ensure_numerics(package):
+    for i in range(len(package)): 
+        Xs = [0,1,2]
+        if i in Xs:
+            for c in package[i].columns:
+                if package[i][c].dtype == object:
+                    package[i][c] = pd.to_numeric(package[i][c])
+        else:
+            pd.to_numeric(package[i])
+
 
 
 def find_parameters(package):
@@ -79,6 +89,7 @@ def find_parameters(package):
     return 
 
 for package in packages:
+    ensure_numerics(package)
     find_parameters(package)
 
 
