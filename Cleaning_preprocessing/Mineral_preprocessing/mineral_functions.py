@@ -73,6 +73,7 @@ def find_mineral_outliers(df):
     etf_high_lim = df.Year_Change.quantile(.8)
     etf_low_lim = df.Year_Change.quantile(.2)
     
+    
     # Compare the mean value of each year to the 20 and 80 limits previously set and 
     # create a column documenting if it was outside the low/high limits
     for i in range(len(df)):

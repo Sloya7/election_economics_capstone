@@ -1,4 +1,4 @@
-from model_inspections import *
+from Model_inspections import *
 from saved_ML_models import *
 from Create_ML.test_ML import *
 
