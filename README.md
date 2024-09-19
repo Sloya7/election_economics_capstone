@@ -15,3 +15,5 @@ python -m Model_inspections.feature_inspections
 codings. 
 
 If you want to print the graphs using python files, the confusion_matrix and data_distro files will do so. You also may use the 'project_visuals' Jupyter Notebook to see all the visual in one place. 
+
+After generating the models, if you make adjustments to the features being processed of the target variable, make sure to delete the appropriate .pkl files generated during Create_ML files. The inspection files only check to see if the files exist and not if they need to be updated. 
