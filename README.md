@@ -9,5 +9,9 @@ Once the project is loaded, the files are designed to cascade into each other. F
 To reach the target analysis, run the one of the following code: 
 Model_inspections.feature_inspections.py
 Create_ML.test_ML.py
+or using the 
+python -m Create_ML.test_ML
+python -m Model_inspections.feature_inspections
+codings. 
 
 If you want to print the graphs using python files, the confusion_matrix and data_distro files will do so. You also may use the 'project_visuals' Jupyter Notebook to see all the visual in one place. 
